@@ -23,8 +23,9 @@ function average(numbers) {
         return NaN
     } else {
         numbers = numbers.filter((num) => !Number.isNaN(num));
-        numberWithoutOutliers = filterOutliers(numbers)
-        return numberWithoutOutliers((p, c) => p + c, 0) / numberWithoutOutliers.length;
+        return numbers((p, c) => p + c, 0) / numbers.length;
+        numbersWithoutOutliers = filterOutliers(numbers)
+        return numbersWithoutOutliers((p, c) => p + c, 0) / numbersWithoutOutliers.length;
     }
 }
 module.exports = {average};
