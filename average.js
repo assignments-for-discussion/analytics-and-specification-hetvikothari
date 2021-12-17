@@ -15,7 +15,8 @@ function filterOutliers(nums) {
   var iqr = q3 - q1;
   var maxValue = q3 + iqr * 1.5;
   var minValue = q1 - iqr * 1.5;
-  var values.filter((x) => (x >= minValue) && (x <= maxValue));
+  var filteredValues = values.filter((x) => (x >= minValue) && (x <= maxValue));
+  return filteredValues;
 }
 
 
