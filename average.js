@@ -1,7 +1,8 @@
+/* Simple Hello World in Node.js */
 function filterOutliers(nums) {
   if (nums.length < 4)
     return nums;
-  const values, q1, q3, iqr, maxValue, minValue;
+  let values, q1, q3, iqr, maxValue, minValue;
   values = nums.slice().sort((a, b) => a - b);
   if ((values.length / 4) % 1 === 0) {
     //find quartiles
@@ -19,8 +20,8 @@ function filterOutliers(nums) {
 
 
 function average(numbers) {
-  if (numbers.length == 0) {
-    return NaN
+  if (numbers.length === 0) {
+    return NaN;
   } else {
     numbers = numbers.filter((num) => !Number.isNaN(num));
     const numbersWithoutOutliers = filterOutliers(numbers);
