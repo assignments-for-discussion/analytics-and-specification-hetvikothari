@@ -1,21 +1,17 @@
-function filterOutliers(nums) {
-  if (nums.length < 4)
-    return nums;
-  var values = nums.slice().sort((a, b) => a - b);
-  if ((values.length / 4) % 1 === 0) {
-    //find quartiles
-    var q1 = 1 / 2 * (values[(values.length / 4)] +
-      values[(values.length / 4) + 1]);
-    var q3 = 1 / 2 * (values[(values.length * (3 / 4))] +
-      values[(values.length * (3 / 4)) + 1]);
-  } else {
-    var q1 = values[Math.floor(values.length / 4 + 1)];
-    var q3 = values[Math.ceil(values.length * (3 / 4) + 1)];
-  }
-  var iqr = q3 - q1;
-  var maxValue = q3 + iqr * 1.5;
-  var minValue = q1 - iqr * 1.5;
-  var filteredValues = values.filter((x) => (x >= minValue) && (x <= maxValue));
+function filterOutliers(numbers) {
+  var values = numbers.concat();
+
+  values.sort((a, b) => a - b);
+
+  var firstQuartile = values[Math.floor(values.length / 4)];
+  var thirdQuartile = values[Math.ceil(values.length * (3 / 4)) - 1];
+  var interQuartileRange = thirdQuartile - firstQuartile;
+
+  var maxValue = thirdQuartile + interQuartileRange * 1.5;
+  var minValue = firstQuartile - interQuartileRange * 1.5;
+
+  var filteredValues = values.filter((x) => x <= maxValue && x >= minValue);
+
   return filteredValues;
 }
 
